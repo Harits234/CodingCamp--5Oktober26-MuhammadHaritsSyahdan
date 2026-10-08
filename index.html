@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===== GREETING & CLOCK ===== -->
+    <header class="greeting-section">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+      <div class="greeting-inner">
+        <p id="current-date" class="date"></p>
+        <h1 id="greeting" class="greeting-text"></h1>
+        <p id="current-time" class="clock"></p>
+      </div>
+    </header>
+
+    <main class="dashboard-grid">
+      <!-- ===== FOCUS TIMER ===== -->
+      <section class="card timer-card">
+        <h2 class="card-title">Focus Timer</h2>
+        <div class="timer-display" id="timer-display">25:00</div>
+        <p class="timer-label" id="timer-label">Ready to focus?</p>
+        <div class="timer-controls">
+          <button class="btn btn-primary" id="timer-start">Start</button>
+          <button class="btn btn-secondary" id="timer-stop" disabled>Stop</button>
+          <button class="btn btn-ghost" id="timer-reset">Reset</button>
+        </div>
+
+        <!-- Pomodoro duration settings -->
+        <div class="timer-settings">
+          <p class="timer-settings-label">Set Duration</p>
+          <div class="timer-presets">
+            <button class="btn btn-preset active" data-minutes="25">25 min</button>
+            <button class="btn btn-preset" data-minutes="50">50 min</button>
+            <button class="btn btn-preset" data-minutes="90">90 min</button>
+          </div>
+          <div class="timer-custom-row">
+            <input type="number" id="timer-custom-input" class="text-input timer-custom-input" placeholder="Custom" min="1" max="180" aria-label="Custom minutes" />
+            <span class="timer-custom-unit">min</span>
+            <button class="btn btn-ghost" id="timer-custom-set">Set</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TO-DO LIST ===== -->
+      <section class="card todo-card">
+        <h2 class="card-title">To-Do List</h2>
+        <div class="todo-input-row">
+          <input type="text" id="todo-input" class="text-input" placeholder="Add a new task…" maxlength="120" />
+          <button class="btn btn-primary" id="todo-add">Add</button>
+        </div>
+        <p class="todo-error" id="todo-error" role="alert">⚠️ Task already exists!</p>
+        <ul class="todo-list" id="todo-list"></ul>
+      </section>
+
+      <!-- ===== QUICK LINKS ===== -->
+      <section class="card links-card">
+        <h2 class="card-title">Quick Links</h2>
+        <div class="links-input-row">
+          <input type="text" id="link-name-input" class="text-input" placeholder="Label" maxlength="40" />
+          <input type="url" id="link-url-input" class="text-input" placeholder="https://example.com" />
+          <button class="btn btn-primary" id="link-add">Add</button>
+        </div>
+        <div class="links-grid" id="links-grid"></div>
+      </section>
+    </main>
+
+    <!-- ===== EDIT MODAL ===== -->
+    <div class="modal-overlay" id="edit-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal">
+        <h3 id="modal-title">Edit Task</h3>
+        <input type="text" id="edit-input" class="text-input" maxlength="120" />
+        <div class="modal-actions">
+          <button class="btn btn-primary" id="modal-save">Save</button>
+          <button class="btn btn-ghost" id="modal-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
